@@ -1,3 +1,4 @@
-# discourse-home-sidebar
+# discourse-sidebar-blocks
 
-A plugin to show a sidebar in the main Discourse screen only. 
+A discourse plugin that adds a sidebar to topic lists (discovery) with several blocks available: posts from a category, recent replies
+

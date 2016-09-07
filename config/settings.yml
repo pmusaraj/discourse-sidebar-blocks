@@ -1,0 +1,11 @@
+plugins:
+  sidebar_enable:
+    default: false
+    client: true
+  sidebar_latest_replies: 
+    default: false
+    client: true
+  sidebar_post_categories:
+    client: true
+    type: list
+    default: ""

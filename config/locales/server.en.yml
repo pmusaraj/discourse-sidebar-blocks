@@ -1,0 +1,5 @@
+en:
+  site_settings:
+    sidebar_enable: "Show sidebar on non-post screens."
+    sidebar_post_categories: "A pipe-delimited (|) list of category slugs from which to show the latest posts on the sidebar."
+    sidebar_latest_replies: "Show/hide a block of the latest replies on the sidebar"
