@@ -9,6 +9,10 @@ export default createWidget('sidebar-items', {
   	var sidebarEnabled = Discourse.SiteSettings.sidebar_enable;
   	if (!sidebarEnabled)
   		return;
+
+    if (Discourse.Mobile.mobileView)
+      return;
+
   	var sidebarLatestReplies = Discourse.SiteSettings.sidebar_latest_replies;
     var sidebarCats = Discourse.SiteSettings.sidebar_post_categories.split("|");
     const result = [];
