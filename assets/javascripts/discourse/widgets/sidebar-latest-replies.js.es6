@@ -16,6 +16,13 @@ export default createWidget('sidebar-latest-replies', {
     getLatestReplies(this).then((result) => {
       if (result.length) {
         for (var i = result.length - 1; i >= 0; i--) {
+          // remove first post in a topic (not a reply)
+          if (result[i].post_number < 2) {
+            result.splice(i, 1);
+          }
+        }
+
+        for (var i = result.length - 1; i >= 0; i--) {
           // limit to 5 max
           if (i > 4) {
             result.splice(i, 1);
@@ -38,7 +45,7 @@ export default createWidget('sidebar-latest-replies', {
     if (state.loading) {
       result.push(h('div.spinner-container', h('div.spinner')));
     } else if (state.posts !== 'empty') {
-      result.push(h('h3.sidebar-heading', 'Recent replies'));
+      result.push(h('h3.sidebar-heading', I18n.t('sidebar_blocks.recent_replies')));
       const replies = state.posts.map(t => this.attach('sidebar-reply-item', t));
       result.push(replies);
     } else {
