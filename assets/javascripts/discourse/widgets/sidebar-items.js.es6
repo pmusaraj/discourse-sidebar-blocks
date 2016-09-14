@@ -10,7 +10,7 @@ export default createWidget('sidebar-items', {
   	if (!sidebarEnabled)
   		return;
 
-    if (Discourse.Mobile.mobileView)
+    if (this.site.mobileView)
       return;
 
   	var sidebarLatestReplies = Discourse.SiteSettings.sidebar_latest_replies;

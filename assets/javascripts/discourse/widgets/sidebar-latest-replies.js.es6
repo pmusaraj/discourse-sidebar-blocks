@@ -14,10 +14,12 @@ export default createWidget('sidebar-latest-replies', {
     this.state.loading = true
     this.state.posts = 'empty'
     getLatestReplies(this).then((result) => {
+      console.log(result);
       if (result.length) {
         for (var i = result.length - 1; i >= 0; i--) {
           // remove first post in a topic (not a reply)
-          if (result[i].post_number < 2) {
+          // remove any "post" that is merely an action
+          if (result[i].post_number < 2 || result[i].action_code != undefined) {
             result.splice(i, 1);
           }
         }
