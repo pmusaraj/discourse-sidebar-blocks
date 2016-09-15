@@ -6,20 +6,24 @@ export default createWidget('sidebar-items', {
   buildKey: () => 'sidebar-items',
 
   html(attrs, state) {
-  	var sidebarEnabled = Discourse.SiteSettings.sidebar_enable;
-  	if (!sidebarEnabled)
+  	if (!Discourse.SiteSettings.sidebar_enable || this.site.mobileView)
   		return;
 
-    if (this.site.mobileView)
-      return;
+    var sidebarBlocks = Discourse.SiteSettings.sidebar_block_order.split("|");
 
-  	var sidebarLatestReplies = Discourse.SiteSettings.sidebar_latest_replies;
-    var sidebarCats = Discourse.SiteSettings.sidebar_post_categories.split("|");
     const result = [];
-  	if (sidebarLatestReplies)
-    	result.push(this.attach('sidebar-latest-replies'));
-    const categoryBlocks = sidebarCats.map(c => this.attach('sidebar-category-posts', {category: c}));
-    result.push(categoryBlocks);
+    var self = this;
+
+    sidebarBlocks.map(function(item) {
+      if (item == 'latest_replies') {
+        result.push(self.attach('sidebar-latest-replies'));
+      } else if (item == 'custom_html') {
+        result.push(self.attach('sidebar-custom-content'));
+      } else {
+        result.push(self.attach('sidebar-category-posts', {category: item}));
+      }
+    });
+
     return result;
   },
 

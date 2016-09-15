@@ -2,10 +2,11 @@ plugins:
   sidebar_enable:
     default: false
     client: true
-  sidebar_latest_replies: 
-    default: false
-    client: true
-  sidebar_post_categories:
+  sidebar_block_order:
     client: true
     type: list
-    default: ""
+    default: "latest_replies"
+  sidebar_custom_content:
+    type: text
+    default: ''
+    client: true

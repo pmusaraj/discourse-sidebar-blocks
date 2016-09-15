@@ -1,5 +1,5 @@
 en:
   site_settings:
-    sidebar_enable: "Show sidebar on non-post screens."
-    sidebar_post_categories: "A pipe-delimited (|) list of category slugs from which to show the latest posts on the sidebar."
-    sidebar_latest_replies: "Show/hide a block of the latest replies on the sidebar"
+    sidebar_enable: "Show sidebar on the right list screens."
+    sidebar_block_order: "Include blocks for the sidebar. Enter category slugs, 'latest_replies' for the latest replies block and/or 'custom_html' for the custom HTML from the field below."
+    sidebar_custom_content: "Custom HTML content. To show this, you must include 'custom_html' in block list above."
