@@ -1,5 +1,7 @@
 import { createWidget } from 'discourse/widgets/widget';
 import { getLatestPosts } from 'discourse/plugins/discourse-sidebar-blocks/discourse/helpers/latest-posts-category';
+import { categoryBadgeHTML } from 'discourse/helpers/category-link';
+import RawHtml from 'discourse/widgets/raw-html'; 
 import { h } from 'virtual-dom';
 
 export default createWidget('sidebar-category-posts', {
@@ -10,7 +12,7 @@ export default createWidget('sidebar-category-posts', {
   },
   buildClasses(attrs) {
     const result = [];
-    if (attrs.category) { result.push(attrs.category); };
+    if (attrs.category) { result.push(`sidebar-c-${attrs.category}`); };
     return result;
   },
 
@@ -43,7 +45,8 @@ export default createWidget('sidebar-category-posts', {
     if (state.loading) {
       result.push(h('div.spinner-container', h('div.spinner')));
     } else if (state.topics !== 'empty') {
-      result.push(h('h3.sidebar-heading', attrs.category));
+      var category = Discourse.Category.findBySlug(attrs.category);
+      result.push(h('div', {innerHTML: categoryBadgeHTML(category)}));
       const topicItems = state.topics.map(t => this.attach('sidebar-post-item', t));
       result.push(h('div', [topicItems]));
     } else {
