@@ -18,7 +18,8 @@ export default createWidget('sidebar-latest-replies', {
         for (var i = result.length - 1; i >= 0; i--) {
           // remove first post in a topic (not a reply)
           // remove any "post" that is merely an action
-          if (result[i].post_number < 2 || result[i].action_code != undefined) {
+          // remove hidden posts
+          if (result[i].post_number < 2 || result[i].action_code != undefined || result[i].hidden) {
             result.splice(i, 1);
           }
         }

@@ -21,6 +21,13 @@ export default createWidget('sidebar-category-posts', {
     this.state.loading = true
     this.state.topics = 'empty'
     getLatestPosts(this).then((result) => {
+      for (var i = result.length - 1; i >= 0; i--) {
+        // remove archived posts
+        if (result[i].archived) {
+          result.splice(i, 1);
+        }
+      }
+
       if (result.length) {
         for (var i = result.length - 1; i >= 0; i--) {
           // limit to 6 max
@@ -50,7 +57,9 @@ export default createWidget('sidebar-category-posts', {
       const topicItems = state.topics.map(t => this.attach('sidebar-post-item', t));
       result.push(h('div', [topicItems]));
     } else {
-      result.push(h('div.no-messages', 'No posts in this topic.'))
+      var category = Discourse.Category.findBySlug(attrs.category);
+      result.push(h('div', {innerHTML: categoryBadgeHTML(category)}));
+      result.push(h('div.no-messages', 'No posts in this category.'))
     }
 
     return result;
