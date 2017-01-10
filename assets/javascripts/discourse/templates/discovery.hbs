@@ -1,3 +1,4 @@
+
 <div class="container">
   {{discourse-banner user=currentUser banner=site.banner}}
 </div>
@@ -28,6 +29,10 @@
   </div>
 </div>
 
-<div class="sidebar">
-  {{plugin-outlet "discovery-below"}}
-</div>
+{{#if siteSettings.sidebar_enable}}
+  <div class="sidebar">
+    {{mount-widget widget="sidebar-items"}}
+  </div>
+{{/if}}
+
+{{plugin-outlet name="discovery-below"}}
