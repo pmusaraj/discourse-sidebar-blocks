@@ -1,4 +1,3 @@
-
 <div class="container">
   {{discourse-banner user=currentUser banner=site.banner}}
 </div>
@@ -9,11 +8,11 @@
   </div>
 </div>
 
-<div class="container list-container {{if siteSettings.sidebar_enable "has-sidebar"}}">
+
+<div class="container list-container  {{if siteSettings.sidebar_enable "has-sidebar"}}">
   <div class="row">
     <div class="full-width">
       {{conditional-loading-spinner condition=loading}}
-
       <div id="header-list-area">
         {{outlet "header-list-container"}}
       </div>
@@ -22,7 +21,8 @@
   <div class="row {{if loading "hidden"}}">
     <div class="full-width">
       <div id="list-area">
-        {{plugin-outlet "discovery-list-container-top"}}
+        {{plugin-outlet name="discovery-list-container-top"
+                        args=(hash category=category)}}
         {{outlet "list-container"}}
       </div>
     </div>
