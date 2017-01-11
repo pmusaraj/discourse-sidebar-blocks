@@ -40,6 +40,11 @@ export default createWidget('sidebar-latest-replies', {
   },
 
   html(attrs, state) {
+    const messageBus = Discourse.__container__.lookup('message-bus:main')
+    messageBus.subscribe("/latest", data => {
+      this.refreshPosts();
+    });
+
     if (!state.posts) {
       this.refreshPosts();
     }
