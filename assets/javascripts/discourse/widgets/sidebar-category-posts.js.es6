@@ -1,7 +1,7 @@
 import { createWidget } from 'discourse/widgets/widget';
 import { getLatestPosts } from 'discourse/plugins/discourse-sidebar-blocks/discourse/helpers/latest-posts-category';
 import { categoryBadgeHTML } from 'discourse/helpers/category-link';
-import RawHtml from 'discourse/widgets/raw-html'; 
+import RawHtml from 'discourse/widgets/raw-html';
 import { h } from 'virtual-dom';
 
 export default createWidget('sidebar-category-posts', {
@@ -29,9 +29,9 @@ export default createWidget('sidebar-category-posts', {
       }
 
       if (result.length) {
+        var max = parseInt(this.siteSettings.sidebar_num_results) - 1;
         for (var i = result.length - 1; i >= 0; i--) {
-          // limit to 6 max
-          if (i > 5) {
+          if (i > max) {
             result.splice(i, 1);
           }
         }
