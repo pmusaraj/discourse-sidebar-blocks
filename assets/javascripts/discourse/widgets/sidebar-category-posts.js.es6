@@ -45,7 +45,6 @@ export default createWidget('sidebar-category-posts', {
   },
 
   html(attrs, state) {
-    console.log(attrs);
     if (!state.topics) {
       this.refreshTopics();
     }
