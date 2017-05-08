@@ -45,6 +45,7 @@ export default createWidget('sidebar-category-posts', {
   },
 
   html(attrs, state) {
+    console.log(attrs);
     if (!state.topics) {
       this.refreshTopics();
     }
@@ -53,8 +54,12 @@ export default createWidget('sidebar-category-posts', {
       result.push(h('div.spinner-container', h('div.spinner')));
     } else if (state.topics !== 'empty') {
       var category = Discourse.Category.findBySlug(attrs.category);
+      var tpl = 'sidebar-post-item';
       result.push(h('div', {innerHTML: categoryBadgeHTML(category)}));
-      const topicItems = state.topics.map(t => this.attach('sidebar-post-item', t));
+      if (attrs.thumbnails) {
+        var tpl = 'sidebar-post-item-thumbnail';
+      }
+      const topicItems = state.topics.map(t => this.attach(tpl, t));
       result.push(h('div', [topicItems]));
     } else {
       var category = Discourse.Category.findBySlug(attrs.category);

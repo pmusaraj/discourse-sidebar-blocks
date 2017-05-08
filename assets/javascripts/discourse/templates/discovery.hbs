@@ -9,7 +9,7 @@
 </div>
 
 
-<div class="container list-container  {{if siteSettings.sidebar_enable "has-sidebar"}}">
+<div class="container list-container {{if siteSettings.sidebar_enable "has-sidebar"}} {{if siteSettings.sidebar_enable_second_col "has-secondary-sidebar"}}">
   <div class="row">
     <div class="full-width">
       {{conditional-loading-spinner condition=loading}}
@@ -32,6 +32,12 @@
 {{#if siteSettings.sidebar_enable}}
   <div class="sidebar">
     {{mount-widget widget="sidebar-items"}}
+  </div>
+{{/if}}
+
+{{#if siteSettings.sidebar_enable_second_col}}
+  <div class="sidebar-secondary">
+    {{mount-widget widget="sidebar-secondary"}}
   </div>
 {{/if}}
 

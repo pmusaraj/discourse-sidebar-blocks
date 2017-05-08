@@ -13,3 +13,9 @@ plugins:
   sidebar_num_results:
     default: '6'
     client: true
+  sidebar_enable_second_col:
+    default: false
+    client: true
+  sidebar_block_order_second_col:
+    client: true
+    type: list

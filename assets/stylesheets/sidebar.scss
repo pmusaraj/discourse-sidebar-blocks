@@ -4,36 +4,64 @@ html:not(.mobile-view) {
     float: right;
     min-height: 100px;
   }
+
   .list-container.has-sidebar {
     width: 65%;
     float: left;
   }
+
+  .list-container.has-sidebar.has-secondary-sidebar {
+    width: 46%;
+  }
+
+  .has-sidebar.has-secondary-sidebar + .sidebar {
+    width: 26%;
+    float: right;
+    margin-left: 3%;
+  }
+
+  .has-sidebar.has-secondary-sidebar + .sidebar + .sidebar-secondary {
+    width: 22%;
+    float: right;
+  }
+
   .sidebar-category-posts {
     margin-bottom: 30px;
+
     h3 {
       text-transform: capitalize;
       padding-bottom: 8px;
     }
-    .sidebar-post-item {
+
+    .sidebar-post-item, .sidebar-post-item-thumbnail {
       padding-bottom: 6px;
       border-bottom: 1px solid #F2F2F2;
       margin-bottom: 6px;
+
+      img {
+        max-width: 100%;
+      }
     }
+
     span.comment_count {
       margin-left: 6px;
       opacity: 0.5;
     }
+
     a.item-title {
       color: #222;
       font-size: 1.143em;
     }
   }
+
   .sidebar-latest-replies {
     margin-bottom: 30px;
+
     h3 {
       padding-bottom: 8px;
     }
   }
+
   .sidebar-reply-item {
     clear: both;
     padding: 6px 0px;
@@ -41,23 +69,27 @@ html:not(.mobile-view) {
     margin-bottom: 6px;
     font-size: 0.94em;
     line-height: 16px;
+
     > .avatar {
       display: block;
       float: left;
       width: 30px;
       margin-right: 10px;
       margin-bottom: 5px;
+
       .topic-avatar {
         width: 100%;
         border-top: none;
         padding-top: 2px;
         float: none;
       }
+
       img {
         width: 30px;
         height: 30px;
       }
     }
+
     > span.reply-date {
       float: right;
       display: block;
@@ -65,16 +97,19 @@ html:not(.mobile-view) {
       width: 35px;
       text-align: right;
     }
+
     > span.excerpt {
       margin-right: 35px;
       display: block;
     }
+
     a.item-title {
       margin-left: 40px;
       padding: 5px 0px;
       display: block;
     }
   }
+
   .sidebar-custom-content {
     margin-bottom: 30px;
   }

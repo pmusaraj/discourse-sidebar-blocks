@@ -4,3 +4,5 @@ en:
     sidebar_block_order: "Include blocks for the sidebar. Enter category slugs, 'latest_replies' for the latest replies block and/or 'custom_html' for the custom HTML from the field below."
     sidebar_custom_content: "Custom HTML content. To show this, you must include 'custom_html' in block list above."
     sidebar_num_results: "Number of category posts to display on each sidebar block."
+    sidebar_enable_second_col: "Show a second sidebar column."
+    sidebar_block_order_second_col: "Include blocks in the second sidebar column."
