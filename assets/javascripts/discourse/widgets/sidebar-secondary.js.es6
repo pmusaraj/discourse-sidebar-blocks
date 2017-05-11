@@ -13,14 +13,29 @@ export default createWidget('sidebar-secondary', {
 
     const result = [];
     var self = this;
+    var thumbnails = false;
 
     sidebarBlocks.map(function(item) {
       if (item == 'latest_replies') {
         result.push(self.attach('sidebar-latest-replies'));
       } else if (item == 'custom_html') {
         result.push(self.attach('sidebar-custom-content'));
+      } else if (item.includes('tag:')) {
+        item = item.split(":");
+        if (item[2] && item[2] == 'thumbnails') {
+          thumbnails = true;
+        }
+        result.push(self.attach('sidebar-category-posts', {tag: item[1], thumbnails: thumbnails}));
       } else {
-        result.push(self.attach('sidebar-category-posts', {category: item, thumbnails: true}));
+        if (item.includes(':')) {
+          item = item.split(":");
+
+          if (item[1] && item[1] == 'thumbnails')
+            thumbnails = true;
+
+          item = item[0];
+        }
+        result.push(self.attach('sidebar-category-posts', {category: item, thumbnails: thumbnails}));
       }
     });
 
