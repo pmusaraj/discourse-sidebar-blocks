@@ -10,7 +10,7 @@ createWidget('sidebar-post-item-thumbnail', {
       attrs.thumbnails ?
       h('a.item-thumbnail', {
         attributes: { href: url}
-      }, h('img.item-thumbnail', {src: attrs.thumbnails.normal}))
+      }, h('img.item-thumbnail', {src: attrs.thumbnails.retina || attrs.thumbnails.normal}))
       : null,
       h('a.item-title', {
         attributes: { href: url}
