@@ -16,27 +16,34 @@ export default createWidget('sidebar-secondary', {
     var thumbnails = false;
 
     sidebarBlocks.map(function(item) {
-      if (item == 'latest_replies') {
-        result.push(self.attach('sidebar-latest-replies'));
-      } else if (item == 'custom_html') {
-        result.push(self.attach('sidebar-custom-content'));
-      } else if (item.includes('tag:')) {
-        item = item.split(":");
-        if (item[2] && item[2] == 'thumbnails') {
-          thumbnails = true;
-        }
-        result.push(self.attach('sidebar-category-posts', {tag: item[1], thumbnails: thumbnails}));
-      } else {
-        if (item.includes(':')) {
-          item = item.split(":");
+      switch(item) {
+          case 'latest_replies':
+              result.push(self.attach('sidebar-latest-replies'));
+              break;
+          case 'custom_html':
+              result.push(self.attach('sidebar-custom-content'));
+              break;
+          default:
+            var props = {};
+            props.thumbnails = item.includes(':thumbnails') ? true : false;
 
-          if (item[1] && item[1] == 'thumbnails')
-            thumbnails = true;
+            // regex to find number of items requested
+            var count = item.match(/(?:)[\d]/g);
+            if (count) {
+              props.count = parseInt(count[0]);
+            }
 
-          item = item[0];
-        }
-        result.push(self.attach('sidebar-category-posts', {category: item, thumbnails: thumbnails}));
+            var type = item.includes(':tag') ? 'tag': 'category';
+            if (item.includes(':')) {
+              item = item.split(":");
+              props[type] = item[0];
+            } else {
+              props[type] = item;
+            }
+
+            result.push(self.attach('sidebar-category-posts', props));
       }
+
     });
 
     return result;

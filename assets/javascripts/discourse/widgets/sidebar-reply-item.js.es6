@@ -8,13 +8,11 @@ createWidget('sidebar-reply-item', {
   html(attrs) {
     var url = Discourse.getURL("/t/") + attrs.topic_slug + "/" + attrs.topic_id + "/" + attrs.id;
 
-    var limit = 125;
-    var excerpt = $(attrs.cooked).text();
-    if (excerpt.length > limit) {
-      excerpt = $('<div>').html(attrs.cooked);
-      excerpt.find("img,aside").remove();
-      excerpt = excerpt.text().substring(0, limit).trim(this) + "...";
-    }
+    var limit = 100;
+    var excerpt = attrs.raw;
+    excerpt = excerpt.replace(/(?:https?|ftp):\/\/[\n\S]+/g, '');
+    if (excerpt.length > limit)
+      excerpt = excerpt.substring(0, limit) + "...";
 
     const createdAt = new Date(attrs.created_at);
 

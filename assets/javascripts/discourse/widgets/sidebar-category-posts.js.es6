@@ -6,9 +6,9 @@ import { h } from 'virtual-dom';
 
 export default createWidget('sidebar-category-posts', {
   tagName: 'div.sidebar-category-posts',
-  buildKey: attrs => `sidebar-category-posts-${attrs.category || attrs.tag}`,
+  buildKey: attrs => `sidebar-category-${attrs.category || attrs.tag}`,
   defaultState() {
-    return { loading: false };
+    return { loading: false, topics: [] };
   },
   buildClasses(attrs) {
     const result = [];
@@ -17,37 +17,21 @@ export default createWidget('sidebar-category-posts', {
     return result;
   },
 
-  refreshTopics() {
-    if (this.state.loading) { return; }
-    this.state.loading = true
-    this.state.topics = 'empty'
-    getLatestPosts(this).then((result) => {
-      for (var i = result.length - 1; i >= 0; i--) {
-        // remove archived posts
-        if (result[i].archived) {
-          result.splice(i, 1);
-        }
-      }
+  refreshTopics(attrs, state) {
+    if (state.loading) { return; }
+    state.loading = true
+    attrs.count = attrs.count || parseInt(this.siteSettings.sidebar_num_results);
 
-      if (result.length) {
-        var max = parseInt(this.siteSettings.sidebar_num_results) - 1;
-        for (var i = result.length - 1; i >= 0; i--) {
-          if (i > max) {
-            result.splice(i, 1);
-          }
-        }
-        this.state.topics = result;
-      } else {
-        this.state.topics = 'empty'
-      }
-      this.state.loading = false
+    getLatestPosts(attrs).then((result) => {
+      state.topics = result.length > 0 ? result : [];
+      state.loading = false
       this.scheduleRerender()
     })
   },
 
   html(attrs, state) {
-    if (!state.topics) {
-      this.refreshTopics();
+    if (state.topics.length === 0) {
+      this.refreshTopics(attrs, state);
     }
     const result = [];
     var heading = '';
@@ -57,21 +41,17 @@ export default createWidget('sidebar-category-posts', {
       result.push(h('div', {innerHTML: heading}));
     }
 
-    if (attrs.tag) {
+    if (attrs.tag)
       result.push(h('h3.sidebar-heading', {innerHTML: attrs.tag}));
-    }
 
     if (state.loading) {
       result.push(h('div.spinner-container', h('div.spinner')));
-    } else if (state.topics !== 'empty') {
-      var tpl = 'sidebar-post-item';
-      if (attrs.thumbnails) {
-        var tpl = 'sidebar-post-item-thumbnail';
-      }
+    } else if (state.topics.length > 0) {
+      var tpl = attrs.thumbnails ? 'sidebar-post-item-thumbnail' : 'sidebar-post-item';
       const topicItems = state.topics.map(t => this.attach(tpl, t));
       result.push(h('div', [topicItems]));
     } else {
-      result.push(h('div.no-messages', 'No posts in this category.'))
+      result.push(h('div.no-messages', 'No posts found.'))
     }
 
     return result;
