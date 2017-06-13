@@ -10,7 +10,9 @@ createWidget('sidebar-reply-item', {
 
     var limit = 100;
     var excerpt = attrs.raw;
+    console.log(attrs.raw);
     excerpt = excerpt.replace(/(?:https?|ftp):\/\/[\n\S]+/g, '');
+    excerpt = excerpt.replace(/<img([\w\W]+?)>/g, '');
     if (excerpt.length > limit)
       excerpt = excerpt.substring(0, limit) + "...";
 

@@ -3,7 +3,7 @@ import { h } from 'virtual-dom';
 
 export default createWidget('sidebar-secondary', {
   tagName: 'div.sidebar-secondary',
-  buildKey: () => 'sidebar-secondary',
+  buildKey: () => 'sidebar-second',
 
   html(attrs, state) {
   	if (!Discourse.SiteSettings.sidebar_enable_second_col || this.site.mobileView)
@@ -28,7 +28,7 @@ export default createWidget('sidebar-secondary', {
             props.thumbnails = item.includes(':thumbnails') ? true : false;
 
             // regex to find number of items requested
-            var count = item.match(/(?:)[\d]/g);
+            var count = item.match(/(?:)[\d]+/g);
             if (count) {
               props.count = parseInt(count[0]);
             }
