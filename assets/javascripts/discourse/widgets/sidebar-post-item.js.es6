@@ -11,7 +11,6 @@ createWidget('sidebar-post-item', {
         attributes: { href: url}
       }, attrs.title),
       h('span.comment_count', {}, attrs.posts_count - 1),
-      // h('span', this.attach('featured-link', {topic: attrs}))
     ]
   },
 });
