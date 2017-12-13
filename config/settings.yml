@@ -19,3 +19,4 @@ plugins:
   sidebar_block_order_second_col:
     client: true
     type: list
+    default: false
