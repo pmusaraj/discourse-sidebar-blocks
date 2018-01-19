@@ -13,3 +13,9 @@ plugins:
   sidebar_num_results:
     default: '6'
     client: true
+  sidebar_leaderboard_count:
+    default: '5'
+    client: true
+  sidebar_leaderboard_period:
+    default: 'daily'
+    client: true

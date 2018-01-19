@@ -19,6 +19,8 @@ export default createWidget('sidebar-items', {
         result.push(self.attach('sidebar-latest-replies'));
       } else if (item == 'custom_html') {
         result.push(self.attach('sidebar-custom-content'));
+      } else if (item == 'leaderboard') {
+        result.push(self.attach('sidebar-leaderboard'));
       } else {
         result.push(self.attach('sidebar-category-posts', {category: item}));
       }
