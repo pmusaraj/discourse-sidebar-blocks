@@ -1,0 +1,8 @@
+es:
+  site_settings:
+    sidebar_enable: "Mostrar sidebar en la parte derecha de la pantalla."
+    sidebar_block_order: "incluir bloques para el sidebar. Ingrese 'latest_replies' para el bloque de últimas respuestas y/o 'custom_html' para el bloque de HTML personalizado."
+    sidebar_custom_content: "Contenido HTML personalizado. Para mostrar esto, debes incluir 'custom_html' en el bloque listado arriba."
+    sidebar_num_results: "Número de temas por categoría a mostrar en cada bloque del sidebar."
+    sidebar_leaderboard_count: "Número de usuarios a mostrar en el leaderboard."
+    sidebar_leaderboard_period: "Periodos para el leaderboard - Valores posibles: daily,weekly,monthly,quarterly,yearly,all"
