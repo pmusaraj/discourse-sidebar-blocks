@@ -7,7 +7,7 @@ html:not(.mobile-view) {
 
   .list-container.has-sidebar {
     width: 65%;
-    float: left;
+    float: right;
   }
 
   .sidebar-category-posts {
@@ -53,7 +53,7 @@ html:not(.mobile-view) {
 
     > .avatar {
       display: block;
-      float: left;
+      float: right;
       width: 30px;
       margin-right: 10px;
       margin-bottom: 5px;
@@ -85,7 +85,7 @@ html:not(.mobile-view) {
     }
 
     a.item-title {
-      margin-left: 40px;
+      margin-right: 40px;
       padding: 5px 0px;
       display: block;
     }
@@ -98,17 +98,17 @@ html:not(.mobile-view) {
   .sidebar-leaderboard {
     td {
       .username {
-        padding-left: 40px;
+        padding-left: 10px;
         padding-top: 3%;
       }
 
       .useravatar {
-        float: left;
+        float: right;
       }
     }
 
     .points {
-      margin-left: 30px;
+      margin-right: 30px;
     }
 
     .fa-heart {
