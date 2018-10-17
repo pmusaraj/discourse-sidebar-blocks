@@ -1,12 +1,12 @@
 html:not(.mobile-view) {
   .has-sidebar + .sidebar {
-    width: 65%;
+    width: 30%;
     float: right;
     min-height: 100px;
   }
 
   .list-container.has-sidebar {
-    width: 100%;
+    width: 65%;
     float: right;
   }
 
@@ -59,7 +59,7 @@ html:not(.mobile-view) {
       margin-bottom: 5px;
 
       .topic-avatar {
-        width: 30%;
+        width: 100%;
         border-top: none;
         padding-top: 2px;
         float: none;
