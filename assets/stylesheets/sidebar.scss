@@ -1,13 +1,13 @@
 html:not(.mobile-view) {
   .has-sidebar + .sidebar {
-    width: 18%;
-    float: left;
+    width: 13%;
+    float: right;
     min-height: 100px;
   }
 
   .list-container.has-sidebar {
-    width: 65%;
-    float: right;
+    width: 940px;
+    float: left;
   }
 
   .sidebar-category-posts {
