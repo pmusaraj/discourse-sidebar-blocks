@@ -1,12 +1,12 @@
 html:not(.mobile-view) {
   .has-sidebar + .sidebar {
-    width: 30%;
+    width: 65%;
     float: right;
     min-height: 100px;
   }
 
   .list-container.has-sidebar {
-    width: 30%;
+    width: 100%;
     float: right;
   }
 
@@ -85,7 +85,7 @@ html:not(.mobile-view) {
     }
 
     a.item-title {
-      margin-right:5px;
+      margin-right:40px;
       padding: 5px 0px;
       display: block;
     }
