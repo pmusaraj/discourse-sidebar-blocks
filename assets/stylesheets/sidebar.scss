@@ -6,7 +6,7 @@ html:not(.mobile-view) {
   }
 
   .list-container.has-sidebar {
-    width: 65%;
+    width: 30%;
     float: right;
   }
 
@@ -59,7 +59,7 @@ html:not(.mobile-view) {
       margin-bottom: 5px;
 
       .topic-avatar {
-        width: 100%;
+        width: 30%;
         border-top: none;
         padding-top: 2px;
         float: none;
@@ -85,7 +85,7 @@ html:not(.mobile-view) {
     }
 
     a.item-title {
-      margin-right: 40px;
+      margin-right:5px;
       padding: 5px 0px;
       display: block;
     }
