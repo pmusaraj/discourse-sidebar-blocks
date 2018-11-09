@@ -1,6 +1,7 @@
 import { createWidget } from 'discourse/widgets/widget';
 import { h } from 'virtual-dom';
 import { getLeaderboardList } from 'discourse/plugins/discourse-sidebar-blocks/discourse/helpers/leaderboard-list';
+import { iconNode } from "discourse-common/lib/icon-library";
 
 createWidget('sidebar-leaderboard', {
   tagName: 'div.sidebar-leaderboard',
@@ -74,7 +75,7 @@ createWidget('sidebar-leaderboard', {
 					    h("tr", [
 					      h("th", 'User'),
 					      h("th", [
-									h('i.fa.fa-heart.d-icon.d-icon-heart'),
+									iconNode('heart'),
 									h('span','Received')
 								])
 					    ]),
