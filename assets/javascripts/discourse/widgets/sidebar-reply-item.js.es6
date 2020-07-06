@@ -1,12 +1,13 @@
 import { createWidget } from 'discourse/widgets/widget';
 import { h } from 'virtual-dom';
 import { dateNode } from 'discourse/helpers/node';
+import getURL from "discourse-common/lib/get-url";
 
 createWidget('sidebar-reply-item', {
   tagName: 'div.sidebar-reply-item',
 
   html(attrs) {
-    var url = Discourse.getURL("/t/") + attrs.topic_slug + "/" + attrs.topic_id + "/" + attrs.id;
+    var url = getURL("/t/") + attrs.topic_slug + "/" + attrs.topic_id + "/" + attrs.id;
 
     var limit = 125;
     var excerpt = $(attrs.cooked).text();
