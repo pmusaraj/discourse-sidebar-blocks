@@ -6,10 +6,10 @@ export default createWidget('sidebar-items', {
   buildKey: () => 'sidebar-items',
 
   html(attrs, state) {
-  	if (!Discourse.SiteSettings.sidebar_enable || this.site.mobileView)
+  	if (!this.siteSettings.sidebar_enable || this.site.mobileView)
   		return;
 
-    var sidebarBlocks = Discourse.SiteSettings.sidebar_block_order.split("|");
+    var sidebarBlocks = this.siteSettings.sidebar_block_order.split("|");
 
     const result = [];
     var self = this;

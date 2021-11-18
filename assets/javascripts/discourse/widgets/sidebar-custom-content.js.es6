@@ -5,6 +5,6 @@ createWidget('sidebar-custom-content', {
   tagName: 'div.sidebar-custom-content',
 
   html(attrs) {
-    return h('div', {innerHTML: Discourse.SiteSettings.sidebar_custom_content});
+    return h('div', {innerHTML: this.siteSettings.sidebar_custom_content});
   },
 });
