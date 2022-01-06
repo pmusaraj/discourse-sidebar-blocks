@@ -22,7 +22,9 @@
     <div class="full-width">
       <div id="list-area">
         {{plugin-outlet name="discovery-list-container-top"
-                        args=(hash category=category)}}
+                        args=(hash category=category)
+                        tagName="span"
+                        connectorTagName="div"}}
         {{outlet "list-container"}}
       </div>
     </div>
@@ -35,4 +37,4 @@
   </div>
 {{/if}}
 
-{{plugin-outlet name="discovery-below"}}
+{{plugin-outlet name="discovery-below" tagName="span" connectorTagName="div"}}
